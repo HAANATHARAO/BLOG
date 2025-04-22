@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuiz Pranombor - Pemulihan Khas</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+    h2 { color: #333; }
+    .soalan { margin-bottom: 30px; background: white; padding: 15px; border-radius: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+    .jawapan { margin-top: 10px; }
+    button { padding: 10px 15px; background-color: #0066cc; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #004999; }
+    #skor { font-size: 18px; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Kuiz Pranombor - Padankan dengan Betul!</h2>
+  <div id="skor">Skor: 0</div>
+
+  <div class="soalan">
+    <p>1. Berapakah bilangan epal dalam gambar ini?</p>
+    <img src="https://i.ibb.co/zPnTRx0/1-epal.png" width="100" alt="1 biji epal">
+    <div class="jawapan">
+      <button onclick="semakJawapan(this, 1)">1</button>
+      <button onclick="semakJawapan(this, 2)">2</button>
+      <button onclick="semakJawapan(this, 3)">3</button>
+    </div>
+  </div>
+
+  <div class="soalan">
+    <p>2. Berapakah bilangan pensel dalam gambar ini?</p>
+    <img src="https://i.ibb.co/x6PwLrw/3-pensel.png" width="200" alt="3 batang pensel">
+    <div class="jawapan">
+      <button onclick="semakJawapan(this, 2)">2</button>
+      <button onclick="semakJawapan(this, 3)">3</button>
+      <button onclick="semakJawapan(this, 4)">4</button>
+    </div>
+  </div>
+
+  <div class="soalan">
+    <p>3. Padankan nombor dengan bilangan objek (gambar kasut).</p>
+    <img src="https://i.ibb.co/S0Vz2HK/2-kasut.png" width="180" alt="2 pasang kasut">
+    <div class="jawapan">
+      <button onclick="semakJawapan(this, 2)">2</button>
+      <button onclick="semakJawapan(this, 3)">3</button>
+      <button onclick="semakJawapan(this, 1)">1</button>
+    </div>
+  </div>
+
+  <div class="soalan">
+    <p>4. Berapa biji oren dalam gambar ini?</p>
+    <img src="https://i.ibb.co/8NgY6tp/4-oren.png" width="150" alt="4 biji oren">
+    <div class="jawapan">
+      <button onclick="semakJawapan(this, 4)">4</button>
+      <button onclick="semakJawapan(this, 5)">5</button>
+      <button onclick="semakJawapan(this, 3)">3</button>
+    </div>
+  </div>
+
+  <div class="soalan">
+    <p>5. Bilangan bas dalam gambar ini?</p>
+    <img src="https://i.ibb.co/HrpHDc3/1-bas.png" width="200" alt="1 buah bas">
+    <div class="jawapan">
+      <button onclick="semakJawapan(this, 1)">1</button>
+      <button onclick="semakJawapan(this, 2)">2</button>
+      <button onclick="semakJawapan(this, 3)">3</button>
+    </div>
+  </div>
+
+  <audio id="betul" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+  <audio id="salah" src="https://www.soundjay.com/button/beep-10.wav"></audio>
+
+  <script>
+    let skor = 0;
+
+    function semakJawapan(button, jawapanBetul) {
+      const pilihan = parseInt(button.innerText);
+      const audioBetul = document.getElementById("betul");
+      const audioSalah = document.getElementById("salah");
+
+      if (pilihan === jawapanBetul) {
+        skor += 1;
+        audioBetul.play();
+        alert("Tepat sekali! ✅");
+      } else {
+        skor -= 1;
+        audioSalah.play();
+        alert("Cuba lagi! ❌");
+      }
+
+      document.getElementById("skor").innerText = "Skor: " + skor;
+    }
+  </script>
+
+</body>
+</html>
